@@ -1,0 +1,177 @@
+* {
+    border: medium none;
+    font-size: 1em;
+    list-style: none outside none;
+    margin: 0;
+    outline: medium none;
+    padding: 0;
+    text-decoration: none;
+}
+#folder {
+    background: none repeat scroll 0 0 #EEF2F7;
+    border: 1px solid #536376;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+    display: none;
+    padding: 14px 22px;
+    position: relative;
+    width: 400px;
+}
+#folder label input {
+    background-position: -201px 0;
+    display: block;
+    font-size: 1.2em;
+    height: 31px;
+    line-height: 31px;
+    padding: 2px 8px;
+    width: 393px;
+}
+
+#close_x {
+    background-position: -387px -102px;
+    display: block;
+    height: 23px;
+    line-height: 1000px;
+    overflow: hidden;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 24px;
+}
+#actions {
+    bottom: 20px;
+    float: left;
+    height: 31px;
+    position: absolute;
+    right: 0;
+}
+#sign_up_form {
+    background: url("divider.png") repeat-x scroll left bottom transparent;
+    margin-bottom: 12px;
+    padding-bottom: 54px;
+    position: relative;
+}
+a.form_button {
+    float: left;
+    height: 31px;
+    margin-right: 15px;
+    width: 93px;
+}
+#cancel {
+    background-position: -198px -36px;
+}
+#try_it {
+    background-position: -30px -150px;
+    margin: -4px;
+    height: 38px;
+}
+#log_in {
+    background-position: -290px -34px;
+    margin: -2px;
+    height: 33px;
+}
+.sprited {
+    background: url("../images/download_sprite.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    line-height: 1000px;
+    overflow: hidden;
+}
+
+.folderContainer {
+    width:100px;
+    height:75px;
+    float:left;    
+    }
+/* login starts here */    
+.logout {
+	float:right;
+	margin:-10px;
+	
+}
+
+#login {
+    background: none repeat scroll 0 0 #EEF2F7;
+    border: 1px solid #536376;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+    display: none;
+    padding: 14px 22px;
+    position: relative;
+    width: 400px;
+}
+#login label input {
+    background-position: -201px 0;
+    display: block;
+    font-size: 1.2em;
+    height: 31px;
+    line-height: 31px;
+    padding: 2px 8px;
+    width: 393px;
+}
+.arrow {
+	float:left;
+}
+.arrow h2 {
+	float:left;
+	padding-left:10px;
+	padding-top:15px;
+	color:#0080FF;
+	font-weight:bold;
+}
+.arrow h1 {
+	float:left;
+	color:#0080FF;
+	font-weight:bold;
+}
+.signup {
+	margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: 'Freight Sans Bold';
+    font-weight: normal !important;
+    text-rendering: optimizelegibility;
+	background: -moz-linear-gradient(center top , #67AE55, #578843) repeat scroll 0 0 #69A74E;
+    border-color: #3B6E22 #3B6E22 #2C5115;
+    box-shadow: 0 1px 1px #A4E388 inset;
+    border: 1px solid;
+    border-radius: 5px 5px 5px 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    letter-spacing: 1px;
+    position: relative;
+    min-width: 154px;
+    padding: 7px 20px;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 19px;
+    line-height: 126%;
+}
+.row-arrow {
+	clear:both;
+}
+.errorMessage {
+	font-family: 'Freight Sans Bold';
+    font-weight: normal !important;
+    text-rendering: optimizelegibility;
+    color:#FF0000;
+}
+
+#sighnUp {
+    background: none repeat scroll 0 0 #EEF2F7;
+    border: 1px solid #536376;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+    display: none;
+    padding: 14px 22px;
+    position: relative;
+    width: 400px;
+}
+#sighnUp label input {
+    background-position: -201px 0;
+    display: block;
+    font-size: 1.2em;
+    height: 31px;
+    line-height: 31px;
+    padding: 2px 8px;
+    width: 393px;
+}
