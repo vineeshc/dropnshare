@@ -56,7 +56,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=dropnshare',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 		
