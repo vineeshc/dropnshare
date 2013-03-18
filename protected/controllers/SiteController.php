@@ -117,7 +117,7 @@ public function filters()
 	public function actionLogin()
 	{
 		$model=new LoginForm;
-
+		$loginFlag = isset($_GET['id']) ? $_GET['id'] : 0;
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{
@@ -126,15 +126,31 @@ public function filters()
 		}
 
 		// collect user input data
-		if(isset($_POST['LoginForm']))
+		if(isset($_POST['LoginForm']) && $loginFlag)
 		{
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
-		// display the login form
+		// display the login form		
+		$userModel=new User;
+		if(isset($_POST['User']))
+		{			
+			$userModel->attributes=$_POST['User'];
+			if($userModel->save()) {
+				$loginArray = array();
+				$loginArray['username'] = $_POST['User']['username'];
+				$loginArray['password'] = $_POST['User']['password'];
+				$loginArray['rememberMe'] = 0;
+				$model->attributes=$loginArray;
+				if($model->validate() && $model->login())
+					$this->redirect(Yii::app()->user->returnUrl);
+			}
+				
+		}
 		$this->render('login',array('model'=>$model));
+		$this->renderPartial('register',array('model'=>$userModel));
 	}
 
 	/**

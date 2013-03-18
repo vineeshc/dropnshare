@@ -42,6 +42,8 @@ function login () {
 	//alert($("#login-form #LoginForm_username").val());
 	//alert(data);
 	//return true;
+	$("#login-form").attr("action",$("#login-form").attr("action") + "/1");
+	//alert($("#login-form").attr("action"));
 	$("#login-form").submit();
 }
 function popSighnup () {
@@ -57,5 +59,5 @@ function sighnUp () {
 	//alert($("#login-form #LoginForm_username").val());
 	//alert(data);
 	//return true;
-	$("#login-form").submit();
+	$("#register").submit();
 }
