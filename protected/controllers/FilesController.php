@@ -77,7 +77,7 @@ class FilesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$files = $_POST['Files'];
+		$files = $_POST['Files'];		
 		$this->createFiles ($files);
 	}
 	private function createFiles ($files)
@@ -89,6 +89,7 @@ class FilesController extends Controller
 		
 		if(isset($files))
 		{
+			$files['createdBy'] = ($files['createdBy'] == 0 ) ? Yii::app()->user->_id : 1; // set to logged in user id
 			//print_r($_POST['Files'])	; die();
 			$model->attributes=$files;
 			if($model->save())

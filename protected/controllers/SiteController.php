@@ -62,7 +62,8 @@ public function filters()
 	public function actionIndex()
 	{
 		$model=new Files;
-		$data = $model->findAll(array("condition"=>"parent=0"));
+		$userId = isset(Yii::app()->user->_id) ? Yii::app()->user->_id : 1;
+		$data = $model->findAll(array("condition"=>"parent=0 && createdBy = $userId"));
 		$output = array();
 		foreach( $data as $objData ) {
 			$output[] = $objData->getAttributes();
@@ -143,6 +144,16 @@ public function filters()
 				$loginArray['username'] = $_POST['User']['username'];
 				$loginArray['password'] = $_POST['User']['password'];
 				$loginArray['rememberMe'] = 0;
+				//Create some default folders for the user
+				$files = array("name" => "home", "parent" => 0, "createdBy" => $userModel->id, "folder" => 1);
+				$this->createFiles ($files);
+				
+				$files = array("name" => "share", "parent" => 0, "createdBy" => $userModel->id, "folder" => 1);
+				$this->createFiles ($files);
+				
+				$files = array("name" => $loginArray['username'] , "parent" => 0, "createdBy" => $userModel->id, "folder" => 1);
+				$this->createFiles ($files);
+				
 				$model->attributes=$loginArray;
 				if($model->validate() && $model->login())
 					$this->redirect(Yii::app()->user->returnUrl);
@@ -152,7 +163,23 @@ public function filters()
 		$this->render('login',array('model'=>$model));
 		$this->renderPartial('register',array('model'=>$userModel));
 	}
-
+	private function createFiles ($files)
+	{
+		$model=new Files;
+	
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+	
+		if(isset($files))
+		{
+			$files['createdBy'] = ($files['createdBy'] == 0 ) ? 1 : Yii::app()->user->_id; // set to logged in user id
+			//print_r($_POST['Files'])	; die();
+			$model->attributes=$files;
+			if($model->save())
+				echo json_encode(array("id" => $model->id));
+			//$this->redirect(array('view','id'=>$model->id));
+		}
+	}
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
