@@ -107,12 +107,38 @@ $(function(){
            // e.preventDefault();
         },
         items: {
+           // "edit": {name: "Open", icon: "open"},//edit
+           // "cut": {name: "Cut", icon: "cut"},
+           // "copy": {name: "Copy", icon: "copy"},
+           // "paste": {name: "Paste", icon: "paste"},
+           // "delete": {name: "Delete", icon: "delete"},
+            "newfolder": {name: "New Folder", icon: "newfolder"},
+            "sep1": "---------",
+            "quit": {name: "Quit", icon: "quit"}
+        }
+    });
+
+    $.contextMenu({
+        selector: '.folderContainer', 
+        callback: function(key, options) {
+            //var m = "clicked: " + key;
+            //window.console && console.log(m) || alert(m); 
+            if(key == "newfolder")
+            	$("#folder").lightbox_me({
+                    //centered: true, 
+                    onLoad: function() { 
+                        $('#folder').find('input:first').focus()
+                        }
+                    });
+           // e.preventDefault();
+        },
+        items: {
             "edit": {name: "Open", icon: "open"},//edit
             "cut": {name: "Cut", icon: "cut"},
             "copy": {name: "Copy", icon: "copy"},
             "paste": {name: "Paste", icon: "paste"},
             "delete": {name: "Delete", icon: "delete"},
-            "newfolder": {name: "New Folder", icon: "newfolder"},
+           // "newfolder": {name: "New Folder", icon: "newfolder"},
             "sep1": "---------",
             "quit": {name: "Quit", icon: "quit"}
         }
