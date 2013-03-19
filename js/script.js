@@ -50,7 +50,7 @@ upload = function(file,rand){
 	// now upload the file
 	var xhr = new Array();
 	xhr[rand] = new XMLHttpRequest();
-	xhr[rand].open("post", SITE_URL + "/index.php/Files/Upload/" + parentId , true);
+	xhr[rand].open("post", SITE_URL + "/index.php/Files/Upload/" + parentId + '?filename=' + file.name , true);
 
 	xhr[rand].upload.addEventListener("progress", function (event) {
 		console.log(event);

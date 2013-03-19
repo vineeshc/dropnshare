@@ -56,6 +56,25 @@ class FilesController extends Controller
 		));
 	}
 	
+	protected function getFileName ($filename = '',$parentId) {
+		$filename = empty($filename) ? md5(time().uniqid()).".jpg" : $filename;
+		$userId = Yii::app()->user->_id;
+		$model=new Files;
+		$data = $model->findAll(array("condition"=>"parent=$parentId && createdBy = $userId && name = '$filename'"));
+		$output = array();
+		foreach( $data as $objData ) {
+			$output[] = $objData->getAttributes();
+		}
+		if(count($output) > 0)
+		{
+			return count($output) . "." . $filename;
+		}
+		else
+		{
+			return $filename;
+		}
+	}
+	
 	public function actionUpload()
 	{	
 		$parentId = isset($_REQUEST['id']) ? $_REQUEST['id'] : 0;
@@ -64,7 +83,7 @@ class FilesController extends Controller
 		
 		$str = file_get_contents('php://input');
 		//$filename = md5(time().uniqid()).".jpg";
-		$filename = isset($_REQUEST['filename']) ? $_REQUEST['filename'] : md5(time().uniqid()).".jpg";
+		$filename = $this->getFileName ($_REQUEST['filename'],$parentId);
 		file_put_contents( $basepath . "uploads/".$filename,$str);
 		$files = array("name" => $filename, "parent" => $parentId, "createdBy" => 0, "folder" => 0);
 		$this->createFiles ($files);

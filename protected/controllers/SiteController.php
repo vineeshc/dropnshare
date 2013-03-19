@@ -172,7 +172,7 @@ public function filters()
 	
 		if(isset($files))
 		{
-			$files['createdBy'] = ($files['createdBy'] == 0 ) ? 1 : Yii::app()->user->_id; // set to logged in user id
+			//$files['createdBy'] = ($files['createdBy'] == 0 ) ? 1 : Yii::app()->user->_id; // set to logged in user id
 			//print_r($_POST['Files'])	; die();
 			$model->attributes=$files;
 			if($model->save())
